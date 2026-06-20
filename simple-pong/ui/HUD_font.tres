@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" format=3 uid="uid://cmnd5f0wc7lg7"]
+
+[ext_resource type="FontFile" uid="uid://cg681fi5iclht" path="res://ui/windows_command_prompt.ttf" id="1_3yjqs"]
+
+[resource]
+base_font = ExtResource("1_3yjqs")

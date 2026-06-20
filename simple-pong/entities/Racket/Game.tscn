@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ssa60swn6lib"]
+
+[ext_resource type="Texture2D" uid="uid://dlm5hin20ma6t" path="res://racket.png" id="1_7bvc7"]
+[ext_resource type="Script" uid="uid://8emmsqimjm62" path="res://entities/Racket/racket.gd" id="1_wfbm5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfbm5"]
+size = Vector2(15, 80)
+
+[node name="Racket" type="CharacterBody2D" unique_id=1191580929 groups=["rackets"]]
+script = ExtResource("1_wfbm5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1085763766]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_wfbm5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=304546688]
+position = Vector2(1.0000001, -1.500001)
+scale = Vector2(0.4375, 1.0394737)
+texture = ExtResource("1_7bvc7")

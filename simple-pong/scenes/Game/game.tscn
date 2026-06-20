@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c7u8ubglt660d"]
+
+[ext_resource type="Script" uid="uid://bpudedb44ib6p" path="res://scenes/Game/game.gd" id="1_54y65"]
+[ext_resource type="PackedScene" uid="uid://ba50gxlcnylqe" path="res://scenes/Field/field.tscn" id="2_7dfdq"]
+[ext_resource type="PackedScene" uid="uid://ssa60swn6lib" path="res://entities/Racket/Game.tscn" id="3_54y65"]
+[ext_resource type="Script" uid="uid://0r7hayu3ucp1" path="res://entities/Racket/PlayerInputComponent.gd" id="4_7dfdq"]
+[ext_resource type="PackedScene" uid="uid://d3bxwn3g2cuqj" path="res://entities/Ball/Ball.tscn" id="4_t5wam"]
+[ext_resource type="Script" uid="uid://cjwus7cb8ibgv" path="res://entities/Racket/AiInputComponent.gd" id="5_54y65"]
+[ext_resource type="PackedScene" uid="uid://lecuyssiwlph" path="res://menus/HUD/HUD.tscn" id="7_t5wam"]
+
+[node name="Game" type="Node2D" unique_id=1721287450]
+script = ExtResource("1_54y65")
+
+[node name="Field" parent="." unique_id=1208273314 instance=ExtResource("2_7dfdq")]
+position = Vector2(10.503174, -24.209503)
+
+[node name="Racket" parent="." unique_id=1191580929 instance=ExtResource("3_54y65")]
+position = Vector2(50, 256)
+
+[node name="PlayerInputComponent" type="Node" parent="Racket" unique_id=2045413094]
+script = ExtResource("4_7dfdq")
+metadata/_custom_type_script = "uid://0r7hayu3ucp1"
+
+[node name="Racket2" parent="." unique_id=523961574 instance=ExtResource("3_54y65")]
+position = Vector2(974, 256)
+
+[node name="AiInputComponent" type="Node" parent="Racket2" unique_id=1240004069]
+script = ExtResource("5_54y65")
+ball_path = NodePath("../../Ball")
+metadata/_custom_type_script = "uid://cjwus7cb8ibgv"
+
+[node name="Ball" parent="." unique_id=1695016593 instance=ExtResource("4_t5wam")]
+position = Vector2(512, 256)
+
+[node name="StartTimer" type="Timer" parent="." unique_id=1247838822]
+wait_time = 3.0
+one_shot = true
+
+[node name="HUD" parent="." unique_id=1710763486 instance=ExtResource("7_t5wam")]
+
+[connection signal="goal_left" from="Field" to="." method="_on_field_goal_left"]
+[connection signal="goal_right" from="Field" to="." method="_on_field_goal_right"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

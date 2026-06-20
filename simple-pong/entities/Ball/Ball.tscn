@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d3bxwn3g2cuqj"]
+
+[ext_resource type="Script" uid="uid://djrn1tjb3nrlj" path="res://entities/Ball/ball.gd" id="1_srn4a"]
+[ext_resource type="Texture2D" uid="uid://bjgl0xs65q0cm" path="res://Screenshot (27).png" id="2_rhaet"]
+[ext_resource type="AudioStream" uid="uid://dpgmsntip4nrf" path="res://TENNISYOSFX.wav" id="3_6se1g"]
+[ext_resource type="AudioStream" uid="uid://c5dltxmr172nv" path="res://BallBounceSfx.wav" id="4_kptkf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6se1g"]
+size = Vector2(32, 32)
+
+[node name="Ball" type="CharacterBody2D" unique_id=1695016593]
+collision_layer = 3
+script = ExtResource("1_srn4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=415678548]
+shape = SubResource("RectangleShape2D_6se1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2030291238]
+position = Vector2(1.5156236, 0.50000095)
+scale = Vector2(0.04720006, 0.046025105)
+texture = ExtResource("2_rhaet")
+
+[node name="RacketSound" type="AudioStreamPlayer2D" parent="." unique_id=1468985439]
+stream = ExtResource("3_6se1g")
+
+[node name="WallSound" type="AudioStreamPlayer2D" parent="." unique_id=1312861673]
+stream = ExtResource("4_kptkf")

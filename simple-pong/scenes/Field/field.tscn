@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ba50gxlcnylqe"]
+
+[ext_resource type="Texture2D" uid="uid://dqk8sfmeixujv" path="res://scenes/Field/field.png" id="1_ig151"]
+
+[sub_resource type="GDScript" id="GDScript_ig151"]
+script/source = "extends Node2D
+
+signal goal_left
+signal goal_right
+
+func _on_goal_left_body_entered(body: Node2D) -> void:
+	emit_signal(\"goal_left\")
+
+
+func _on_goal_right_body_entered(body: Node2D) -> void:
+	emit_signal(\"goal_right\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adg2b"]
+size = Vector2(1024, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig151"]
+size = Vector2(20, 512)
+
+[node name="Field" type="Node2D" unique_id=1208273314]
+script = SubResource("GDScript_ig151")
+
+[node name="WallTop" type="StaticBody2D" parent="." unique_id=1054805676]
+position = Vector2(512, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=1819435712]
+shape = SubResource("RectangleShape2D_adg2b")
+
+[node name="WallBottom" type="StaticBody2D" parent="." unique_id=636978165]
+position = Vector2(512, 522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom" unique_id=318017721]
+shape = SubResource("RectangleShape2D_adg2b")
+
+[node name="GoalLeft" type="Area2D" parent="." unique_id=1121946131]
+position = Vector2(-10, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalLeft" unique_id=2099583120]
+shape = SubResource("RectangleShape2D_ig151")
+
+[node name="GoalRight" type="Area2D" parent="." unique_id=1077443747]
+position = Vector2(1034, 256)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight" unique_id=727282582]
+shape = SubResource("RectangleShape2D_ig151")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2112101267]
+position = Vector2(512.50006, 256)
+scale = Vector2(0.84405935, 0.74853796)
+texture = ExtResource("1_ig151")
+
+[connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
+[connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]

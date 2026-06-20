@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://lecuyssiwlph"]
+
+[ext_resource type="FontVariation" uid="uid://cmnd5f0wc7lg7" path="res://ui/HUD_font.tres" id="1_i7l1v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1p5ji"]
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.007287441, 0.002677755, 0.004621078, 1)
+
+[node name="HUD" type="Control" unique_id=1710763486]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1024.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CountdownContainer" type="PanelContainer" parent="." unique_id=1053715809]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -120.0
+offset_right = 10.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1p5ji")
+
+[node name="CenterContainer" type="CenterContainer" parent="CountdownContainer" unique_id=817120381]
+layout_mode = 2
+
+[node name="ActionText" type="Label" parent="CountdownContainer/CenterContainer" unique_id=1535649690]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i7l1v")
+theme_override_font_sizes/font_size = 75
+text = "3"
+
+[node name="PointsDisplay" type="HBoxContainer" parent="." unique_id=310484497]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_right = 11.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_constants/separation = 75
+alignment = 1
+
+[node name="ScorePlayerOne" type="Label" parent="PointsDisplay" unique_id=1047740726]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i7l1v")
+theme_override_font_sizes/font_size = 100
+text = "1"
+
+[node name="ScorePlayerTwo" type="Label" parent="PointsDisplay" unique_id=441031268]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i7l1v")
+theme_override_font_sizes/font_size = 100
+text = "3"
